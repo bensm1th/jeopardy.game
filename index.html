@@ -15,7 +15,7 @@
         }
         .game-board {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
             max-width: 800px;
             margin: 20px auto;
@@ -60,20 +60,42 @@
 <body>
     <h1>Gilded Age Jeopardy</h1>
     <div id="board" class="game-board">
-        <div class="tile" data-question="q1">Industrialization $100</div>
-        <div class="tile" data-question="q2">Industrialization $200</div>
-        <div class="tile" data-question="q3">Industrialization $300</div>
-        <div class="tile" data-question="q4">Labor $100</div>
-        <div class="tile" data-question="q5">Labor $200</div>
-        <div class="tile" data-question="q6">Labor $300</div>
-        <div class="tile" data-question="q7">Politics $100</div>
-        <div class="tile" data-question="q8">Politics $200</div>
-        <div class="tile" data-question="q9">Politics $300</div>
-        <div class="tile" data-question="q10">Immigration $100</div>
-        <div class="tile" data-question="q11">Immigration $200</div>
-        <div class="tile" data-question="q12">Immigration $300</div>
+        <!-- Column Headers -->
+        <div class="tile disabled">Industrialization</div>
+        <div class="tile disabled">Labor</div>
+        <div class="tile disabled">Politics</div>
+        <div class="tile disabled">Immigration</div>
+
+        <!-- Industrialization Column -->
+        <div class="tile" data-question="q1">$100</div>
+        <div class="tile" data-question="q2">$200</div>
+        <div class="tile" data-question="q3">$300</div>
+        <div class="tile" data-question="q4">$400</div>
+        <div class="tile" data-question="q5">$500</div>
+
+        <!-- Labor Column -->
+        <div class="tile" data-question="q6">$100</div>
+        <div class="tile" data-question="q7">$200</div>
+        <div class="tile" data-question="q8">$300</div>
+        <div class="tile" data-question="q9">$400</div>
+        <div class="tile" data-question="q10">$500</div>
+
+        <!-- Politics Column -->
+        <div class="tile" data-question="q11">$100</div>
+        <div class="tile" data-question="q12">$200</div>
+        <div class="tile" data-question="q13">$300</div>
+        <div class="tile" data-question="q14">$400</div>
+        <div class="tile" data-question="q15">$500</div>
+
+        <!-- Immigration Column -->
+        <div class="tile" data-question="q16">$100</div>
+        <div class="tile" data-question="q17">$200</div>
+        <div class="tile" data-question="q18">$300</div>
+        <div class="tile" data-question="q19">$400</div>
+        <div class="tile" data-question="q20">$500</div>
     </div>
 
+    <!-- Questions -->
     <div id="q1" class="question">
         <h2>Who dominated the steel industry during the Gilded Age?</h2>
         <button class="button" onclick="removeTile('q1')">Back to Board</button>
@@ -83,44 +105,76 @@
         <button class="button" onclick="removeTile('q2')">Back to Board</button>
     </div>
     <div id="q3" class="question">
-        <h2>This individual dominated the oil industry with Standard Oil.</h2>
+        <h2>Who dominated the oil industry with Standard Oil?</h2>
         <button class="button" onclick="removeTile('q3')">Back to Board</button>
     </div>
     <div id="q4" class="question">
-        <h2>What riot in 1886 severely damaged the reputation of the labor movement?</h2>
+        <h2>What strategy did Andrew Carnegie use to control every step of steel production?</h2>
         <button class="button" onclick="removeTile('q4')">Back to Board</button>
     </div>
     <div id="q5" class="question">
-        <h2>What labor union sought to include all workers regardless of skill?</h2>
+        <h2>What Supreme Court case allowed regulation of railroads by states in 1877?</h2>
         <button class="button" onclick="removeTile('q5')">Back to Board</button>
     </div>
     <div id="q6" class="question">
-        <h2>What 1894 strike disrupted rail traffic nationwide?</h2>
+        <h2>What labor union sought to include all workers regardless of skill?</h2>
         <button class="button" onclick="removeTile('q6')">Back to Board</button>
     </div>
     <div id="q7" class="question">
-        <h2>What scandal involved the fraudulent construction of the Union Pacific Railroad?</h2>
+        <h2>What strike disrupted rail traffic nationwide in 1894?</h2>
         <button class="button" onclick="removeTile('q7')">Back to Board</button>
     </div>
     <div id="q8" class="question">
-        <h2>What was the primary goal of the Pendleton Civil Service Act?</h2>
+        <h2>What riot in 1886 severely damaged the reputation of the labor movement?</h2>
         <button class="button" onclick="removeTile('q8')">Back to Board</button>
     </div>
     <div id="q9" class="question">
-        <h2>This act, passed in 1890, aimed to curb monopolies but was initially ineffective.</h2>
+        <h2>Who was the founder of the American Federation of Labor (AFL)?</h2>
         <button class="button" onclick="removeTile('q9')">Back to Board</button>
     </div>
     <div id="q10" class="question">
-        <h2>Immigrants from Europe were primarily processed at this famous location in New York Harbor.</h2>
+        <h2>What labor leader organized the Pullman Strike?</h2>
         <button class="button" onclick="removeTile('q10')">Back to Board</button>
     </div>
     <div id="q11" class="question">
-        <h2>What term describes the anti-immigrant sentiment common during the Gilded Age?</h2>
+        <h2>What scandal involved the fraudulent construction of the Union Pacific Railroad?</h2>
         <button class="button" onclick="removeTile('q11')">Back to Board</button>
     </div>
     <div id="q12" class="question">
-        <h2>This 1882 act banned Chinese laborers from immigrating to the U.S.</h2>
+        <h2>What was the primary goal of the Pendleton Civil Service Act?</h2>
         <button class="button" onclick="removeTile('q12')">Back to Board</button>
+    </div>
+    <div id="q13" class="question">
+        <h2>Which act, passed in 1890, aimed to curb monopolies?</h2>
+        <button class="button" onclick="removeTile('q13')">Back to Board</button>
+    </div>
+    <div id="q14" class="question">
+        <h2>What political movement sought to improve the lives of farmers?</h2>
+        <button class="button" onclick="removeTile('q14')">Back to Board</button>
+    </div>
+    <div id="q15" class="question">
+        <h2>Who won the disputed election of 1876?</h2>
+        <button class="button" onclick="removeTile('q15')">Back to Board</button>
+    </div>
+    <div id="q16" class="question">
+        <h2>Where were immigrants processed upon arrival in New York Harbor?</h2>
+        <button class="button" onclick="removeTile('q16')">Back to Board</button>
+    </div>
+    <div id="q17" class="question">
+        <h2>What term describes the anti-immigrant sentiment during the Gilded Age?</h2>
+        <button class="button" onclick="removeTile('q17')">Back to Board</button>
+    </div>
+    <div id="q18" class="question">
+        <h2>Which 1882 act banned Chinese immigration?</h2>
+        <button class="button" onclick="removeTile('q18')">Back to Board</button>
+    </div>
+    <div id="q19" class="question">
+        <h2>What agreement restricted Japanese immigration in 1907?</h2>
+        <button class="button" onclick="removeTile('q19')">Back to Board</button>
+    </div>
+    <div id="q20" class="question">
+        <h2>What religious group faced prejudice among "new" immigrants?</h2>
+        <button class="button" onclick="removeTile('q20')">Back to Board</button>
     </div>
 
     <script>
