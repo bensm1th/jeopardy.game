@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gilded Age Jeopardy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .tile {
+            background-color: #0074d9;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .tile:hover {
+            transform: scale(1.05);
+        }
+        .tile.disabled {
+            background-color: #555;
+            pointer-events: none;
+        }
+        .question {
+            display: none;
+            margin-top: 20px;
+        }
+        .question.active {
+            display: block;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gilded Age Jeopardy</h1>
+    <div id="board" class="game-board">
+        <div class="tile" data-question="q1">Industrialization $100</div>
+        <div class="tile" data-question="q2">Industrialization $200</div>
+        <div class="tile" data-question="q3">Labor $100</div>
+        <div class="tile" data-question="q4">Labor $200</div>
+        <div class="tile" data-question="q5">Politics $100</div>
+        <div class="tile" data-question="q6">Politics $200</div>
+    </div>
+
+    <div id="q1" class="question">
+        <h2>Who dominated the steel industry during the Gilded Age?</h2>
+        <button class="button" onclick="removeTile('q1')">Back to Board</button>
+    </div>
+    <div id="q2" class="question">
+        <h2>What innovation is associated with Henry Bessemer?</h2>
+        <button class="button" onclick="removeTile('q2')">Back to Board</button>
+    </div>
+    <div id="q3" class="question">
+        <h2>This riot in 1886 severely damaged the reputation of the labor movement.</h2>
+        <button class="button" onclick="removeTile('q3')">Back to Board</button>
+    </div>
+    <div id="q4" class="question">
+        <h2>What labor union sought to include all workers regardless of skill?</h2>
+        <button class="button" onclick="removeTile('q4')">Back to Board</button>
+    </div>
+    <div id="q5" class="question">
+        <h2>This scandal involved the fraudulent construction of the Union Pacific Railroad.</h2>
+        <button class="button" onclick="removeTile('q5')">Back to Board</button>
+    </div>
+    <div id="q6" class="question">
+        <h2>What was the primary goal of the Pendleton Civil Service Act?</h2>
+        <button class="button" onclick="removeTile('q6')">Back to Board</button>
+    </div>
+
+    <script>
+        const tiles = document.querySelectorAll('.tile');
+        const questions = document.querySelectorAll('.question');
+
+        tiles.forEach(tile => {
+            tile.addEventListener('click', () => {
+                const questionId = tile.getAttribute('data-question');
+                showQuestion(questionId);
+            });
+        });
+
+        function showQuestion(id) {
+            questions.forEach(q => q.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.getElementById('board').style.display = 'none';
+        }
+
+        function removeTile(id) {
+            document.getElementById(id).classList.remove('active');
+            document.getElementById('board').style.display = 'grid';
+            const tile = document.querySelector(`.tile[data-question="${id}"]`);
+            if (tile) tile.classList.add('disabled');
+        }
+    </script>
+</body>
+</html>
