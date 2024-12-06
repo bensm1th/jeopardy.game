@@ -63,10 +63,38 @@
         .button:hover {
             background-color: #218838;
         }
+        .player-section {
+            margin: 20px 0;
+        }
+        .player {
+            display: inline-block;
+            margin: 0 10px;
+            text-align: center;
+        }
+        .score {
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
     <h1>Gilded Age Jeopardy</h1>
+
+    <div class="player-section">
+        <div class="player" id="player1">
+            <h2>Player 1</h2>
+            <div class="score" id="score1">Score: 0</div>
+        </div>
+        <div class="player" id="player2">
+            <h2>Player 2</h2>
+            <div class="score" id="score2">Score: 0</div>
+        </div>
+        <div class="player" id="player3">
+            <h2>Player 3</h2>
+            <div class="score" id="score3">Score: 0</div>
+        </div>
+    </div>
+
     <div id="board" class="game-board">
         <!-- Column Headers -->
         <div class="tile disabled">Industrialization</div>
@@ -75,32 +103,32 @@
         <div class="tile disabled">Immigration</div>
 
         <!-- Industrialization Column -->
-        <div class="tile" data-question="q1">$100</div>
-        <div class="tile" data-question="q2">$200</div>
-        <div class="tile" data-question="q3">$300</div>
-        <div class="tile" data-question="q4">$400</div>
-        <div class="tile" data-question="q5">$500</div>
+        <div class="tile" data-question="q1" data-value="100">$100</div>
+        <div class="tile" data-question="q2" data-value="200">$200</div>
+        <div class="tile" data-question="q3" data-value="300">$300</div>
+        <div class="tile" data-question="q4" data-value="400">$400</div>
+        <div class="tile" data-question="q5" data-value="500">$500</div>
 
         <!-- Labor Column -->
-        <div class="tile" data-question="q6">$100</div>
-        <div class="tile" data-question="q7">$200</div>
-        <div class="tile" data-question="q8">$300</div>
-        <div class="tile" data-question="q9">$400</div>
-        <div class="tile" data-question="q10">$500</div>
+        <div class="tile" data-question="q6" data-value="100">$100</div>
+        <div class="tile" data-question="q7" data-value="200">$200</div>
+        <div class="tile" data-question="q8" data-value="300">$300</div>
+        <div class="tile" data-question="q9" data-value="400">$400</div>
+        <div class="tile" data-question="q10" data-value="500">$500</div>
 
         <!-- Politics Column -->
-        <div class="tile" data-question="q11">$100</div>
-        <div class="tile" data-question="q12">$200</div>
-        <div class="tile" data-question="q13">$300</div>
-        <div class="tile" data-question="q14">$400</div>
-        <div class="tile" data-question="q15">$500</div>
+        <div class="tile" data-question="q11" data-value="100">$100</div>
+        <div class="tile" data-question="q12" data-value="200">$200</div>
+        <div class="tile" data-question="q13" data-value="300">$300</div>
+        <div class="tile" data-question="q14" data-value="400">$400</div>
+        <div class="tile" data-question="q15" data-value="500">$500</div>
 
         <!-- Immigration Column -->
-        <div class="tile" data-question="q16">$100</div>
-        <div class="tile" data-question="q17">$200</div>
-        <div class="tile" data-question="q18">$300</div>
-        <div class="tile" data-question="q19">$400</div>
-        <div class="tile" data-question="q20">$500</div>
+        <div class="tile" data-question="q16" data-value="100">$100</div>
+        <div class="tile" data-question="q17" data-value="200">$200</div>
+        <div class="tile" data-question="q18" data-value="300">$300</div>
+        <div class="tile" data-question="q19" data-value="400">$400</div>
+        <div class="tile" data-question="q20" data-value="500">$500</div>
     </div>
 
     <!-- Questions and Answers -->
@@ -108,31 +136,12 @@
         <h2>Who dominated the steel industry during the Gilded Age?</h2>
         <button class="button" onclick="showAnswer('a1')">Show Answer</button>
         <div id="a1" class="answer">Answer: Andrew Carnegie</div>
-        <button class="button" onclick="removeTile('q1')">Back to Board</button>
-    </div>
-    <div id="q2" class="question">
-        <h2>What innovation is associated with Henry Bessemer?</h2>
-        <button class="button" onclick="showAnswer('a2')">Show Answer</button>
-        <div id="a2" class="answer">Answer: The Bessemer Process</div>
-        <button class="button" onclick="removeTile('q2')">Back to Board</button>
-    </div>
-    <div id="q3" class="question">
-        <h2>Who dominated the oil industry with Standard Oil?</h2>
-        <button class="button" onclick="showAnswer('a3')">Show Answer</button>
-        <div id="a3" class="answer">Answer: John D. Rockefeller</div>
-        <button class="button" onclick="removeTile('q3')">Back to Board</button>
-    </div>
-    <div id="q4" class="question">
-        <h2>What strategy did Andrew Carnegie use to control every step of steel production?</h2>
-        <button class="button" onclick="showAnswer('a4')">Show Answer</button>
-        <div id="a4" class="answer">Answer: Vertical Integration</div>
-        <button class="button" onclick="removeTile('q4')">Back to Board</button>
-    </div>
-    <div id="q5" class="question">
-        <h2>What Supreme Court case allowed regulation of railroads by states in 1877?</h2>
-        <button class="button" onclick="showAnswer('a5')">Show Answer</button>
-        <div id="a5" class="answer">Answer: Munn v. Illinois</div>
-        <button class="button" onclick="removeTile('q5')">Back to Board</button>
+        <div class="player-choice">
+            <button class="button" onclick="awardPoints(1, 100)">Player 1</button>
+            <button class="button" onclick="awardPoints(2, 100)">Player 2</button>
+            <button class="button" onclick="awardPoints(3, 100)">Player 3</button>
+        </div>
+        <button class="button" onclick="hideAnswer('a1', 'q1')">Back to Board</button>
     </div>
     <!-- Continue for all questions -->
 
@@ -157,11 +166,18 @@
             document.getElementById(id).classList.add('active');
         }
 
-        function removeTile(id) {
-            document.getElementById(id).classList.remove('active');
+        function hideAnswer(answerId, questionId) {
+            document.getElementById(answerId).classList.remove('active');
+            document.getElementById(questionId).classList.remove('active');
             document.getElementById('board').style.display = 'grid';
-            const tile = document.querySelector(`.tile[data-question="${id}"]`);
+            const tile = document.querySelector(`.tile[data-question="${questionId}"]`);
             if (tile) tile.classList.add('disabled');
+        }
+
+        function awardPoints(player, points) {
+            const scoreElement = document.getElementById(`score${player}`);
+            let currentScore = parseInt(scoreElement.textContent.replace('Score: ', ''));
+            scoreElement.textContent = `Score: ${currentScore + points}`;
         }
     </script>
 </body>
