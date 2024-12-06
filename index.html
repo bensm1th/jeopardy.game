@@ -138,4 +138,47 @@
         <div id="a1" class="answer">Answer: Andrew Carnegie</div>
         <div class="player-choice">
             <button class="button" onclick="awardPoints(1, 100)">Player 1</button>
-            <
+            <button class="button" onclick="awardPoints(2, 100)">Player 2</button>
+            <button class="button" onclick="awardPoints(3, 100)">Player 3</button>
+        </div>
+        <button class="button" onclick="hideAnswer('a1', 'q1')">Back to Board</button>
+    </div>
+    <!-- Continue for all questions -->
+
+    <script>
+        const tiles = document.querySelectorAll('.tile');
+        const questions = document.querySelectorAll('.question');
+
+        tiles.forEach(tile => {
+            tile.addEventListener('click', () => {
+                const questionId = tile.getAttribute('data-question');
+                showQuestion(questionId);
+            });
+        });
+
+        function showQuestion(id) {
+            questions.forEach(q => q.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.getElementById('board').style.display = 'none';
+        }
+
+        function showAnswer(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function hideAnswer(answerId, questionId) {
+            document.getElementById(answerId).classList.remove('active');
+            document.getElementById(questionId).classList.remove('active');
+            document.getElementById('board').style.display = 'grid';
+            const tile = document.querySelector(`.tile[data-question="${questionId}"]`);
+            if (tile) tile.classList.add('disabled');
+        }
+
+        function awardPoints(player, points) {
+            const scoreElement = document.getElementById(`score${player}`);
+            let currentScore = parseInt(scoreElement.textContent.replace('Score: ', ''));
+            scoreElement.textContent = `Score: ${currentScore + points}`;
+        }
+    </script>
+</body>
+</html>
